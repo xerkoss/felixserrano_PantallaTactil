@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="felixserrano.example.org.pantallatctil.PantallaTactilActivity"
+    android:weightSum="100">
+
+    <TextView
+        android:text="Pulsa aquí"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/TextViewEntrada"
+        android:layout_weight="75"
+        android:background="#00f"
+        android:textColor="#fff"
+        android:gravity="center"/>
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="25"
+            android:id="@+id/Scroll">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView android:id="@+id/TextViewSalida"
+                    android:layout_width="match_parent"
+                    android:text="Pulsaciones:"
+                    android:layout_height="match_parent">
+                </TextView>
+            </LinearLayout>
+        </ScrollView>
+
+
+</LinearLayout>
