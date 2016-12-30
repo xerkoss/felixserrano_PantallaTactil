@@ -22,8 +22,24 @@ public class PantallaTactilActivity extends AppCompatActivity implements View.On
     @Override
     public boolean onTouch(View view, MotionEvent motionEvent) {
         TextView salida = (TextView) findViewById(R.id.TextViewSalida);
-        salida.append("\nPresión: " + motionEvent.getPressure() + "\nTamaño: " + motionEvent.getSize()+ "\n");
-        salida.append("\n" + motionEvent.toString()+ "\n");
+
+        float presion = motionEvent.getPressure();
+        float tam = motionEvent.getSize();
+        String acciones [] = {"ACTION_DOWN","ACTION_UP","ACTION_MOVE","ACTION_CANCEL","ACTION_OUTSIDE","ACTION_POINTER_DOWN","ACTION_POWER_UP"};
+        int accion = motionEvent.getAction();
+        int codigoAccion = accion & MotionEvent.ACTION_MASK;
+        int iPuntero = (accion & MotionEvent.ACTION_POINTER_INDEX_MASK) >> MotionEvent.ACTION_POINTER_INDEX_SHIFT;
+
+        salida.append("\nPresión: " + presion + "\nTamaño: " + tam + "\n");
+        //salida.append("\n" + motionEvent.toString()+ "\n");
+        salida.append("\n" + acciones[codigoAccion]);
+        salida.append(" Generada por puntero: " + iPuntero);
+
+        for(int i = 0; i<motionEvent.getPointerCount(); i++)
+        {
+            salida.append("\npuntero: " + motionEvent.getPointerId(i) + " x:" +motionEvent.getX(i) + " y:"+motionEvent.getY(i));
+        }
+        salida.append("\n");
 
         // extra desplazar scroll abajo
         final ScrollView scrollView = (ScrollView)findViewById(R.id.Scroll);
